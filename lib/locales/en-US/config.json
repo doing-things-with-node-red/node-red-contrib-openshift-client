@@ -1,0 +1,21 @@
+{
+    "oc": {
+        "label": {
+            "name": "Name",
+            "host": "Host",
+            "port": "Port",
+            "insecure": "Insecure",
+            "token": "Token"
+        },
+        "placeholder": {
+            "name": "ocConfig",
+            "host": "127.0.0.1",
+            "port": "5432",
+            "token": "token"
+        },
+        "tab": {
+            "connection": "Connection",
+            "security": "Security"
+        } 
+    }
+}

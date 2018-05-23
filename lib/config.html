@@ -1,0 +1,156 @@
+<script type="text/x-red" data-template-name="ocConfig">
+    <div class="form-row">
+        <label for="node-config-input-name">
+            <i class="fa fa-tag"></i>
+            <span data-i18n="oc.label.name"></span>
+        </label>
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]oc.placeholder.name">
+    </div>
+    <div class="form-row">
+        <ul style="background: #fff; min-width: 600px; margin-bottom: 20px;" id="ocConfig-tabs"></ul>
+    </div>
+    <div id="ocConfig-tabs-content" style="min-height: 170px;">
+        <div id="ocConfig-tab-connection" style="display: none;">
+            <div class="form-row">
+                <label for="node-config-input-host">
+                    <i class="fa fa-server"></i>
+                    <span data-i18n="oc.label.host"></span>
+                </label>
+                <input type="text" id="node-config-input-host" data-i18n="[placeholder]oc.placeholder.host" style="width: 80%;">
+                <input type="hidden" id="node-config-input-hostFieldType">
+            </div>
+            <div class="form-row">
+                <label for="node-config-input-port">
+                    <span data-i18n="oc.label.port"></span>
+                </label>
+                <input type="text" id="node-config-input-port" data-i18n="[placeholder]oc.placeholder.port" style="width: 80%;">
+                <input type="hidden" id="node-config-input-portFieldType">
+            </div>
+            <div class="form-row">
+                <label for="node-config-input-insecure" style="width: auto;margin-right: 72px;">
+                    <span data-i18n="oc.label.insecure"></span>
+                </label>
+                <input type="text" id="node-config-input-insecure" style="display: inline-block; width: auto; vertical-align: top;">
+                <input type="hidden" id="node-config-input-insecureFieldType">
+            </div>
+        </div>
+        <div id="ocConfig-tab-security" style="display: none;">
+            <div class="form-row">
+                <label for="node-config-input-token">
+                    <i class="fa fa-lock"></i>
+                    <span data-i18n="oc.label.token"></span>
+                </label>
+                <input type="password" id="node-config-input-token" data-i18n="[placeholder]oc.placeholder.token" style="width: 80%;">
+                <input type="hidden" id="node-config-input-tokenFieldType">
+            </div>
+        </div>
+    </div>
+    </div>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('ocConfig', {
+      category: "config",
+      color: "#FFF",
+      defaults: {
+        name: {
+          value: ""
+        },
+        host: {
+          value: "127.0.0.1",
+          required: true
+        },
+        hostFieldType: {
+          value: "str"
+        },
+        port: {
+          value: 5432,
+          required: true
+        },
+        portFieldType: {
+          value: "num"
+        },
+        insecure: {
+          value: false,
+          required: true
+        },
+        insecureFieldType: {
+          value: "bool"
+        },
+        tokenFieldType: {
+          value: "str"
+        }
+      },
+      credentials: {
+        token: {
+          type: "text",
+          required: true
+        }
+      },
+      label: function() {
+        if(!this.name) {
+          this.name = "oc@" + this.host + ":" + this.port;
+        }
+        return this.name;
+      },
+      labelStyle: function() {
+        return this.name ? "node_label_italic" : "";
+      },
+      oneditprepare: function() {
+        const tabs = RED.tabs.create({
+          id: "ocConfig-tabs",
+          onchange: function(tab) {
+            $("#ocConfig-tabs-content").children().hide();
+            $("#" + tab.id).show();
+          }
+        });
+        tabs.addTab({
+          id: "ocConfig-tab-connection",
+          label: this._('oc.tab.connection')
+        });
+        tabs.addTab({
+          id: "ocConfig-tab-security",
+          label: this._('oc.tab.security')
+        });
+        $("#node-config-input-host").typedInput({
+            default: 'str',
+            types: ['str','flow','global'],
+            typeField: $("#node-config-input-hostFieldType")
+        });
+        $("#node-config-input-port").typedInput({
+            default: 'num',
+            types: ['num','flow','global'],
+            typeField: $("#node-config-input-portFieldType")
+        });
+        $("#node-config-input-insecure").typedInput({
+            default: 'bool',
+            types: ['bool','flow','global'],
+            typeField: $("#node-config-input-insecureFieldType")
+        });
+        $("#node-config-input-token")
+          .typedInput({
+              default: 'str',
+              types: ['str','flow','global'],
+              typeField: $("#node-config-input-tokenFieldType")
+          })
+          .on('change', function(type, value) {
+            const e = $(this);
+            const kind = value === true ? e.typedInput('type') : value;
+            switch (kind) {
+              case 'global':
+              case 'flow': {
+                e.attr('type', 'text');
+                break;
+              }
+              case 'str': {
+                e.attr('type', 'password');
+                break;
+              }
+              default: {
+                // Nothing to do here!!
+                break;
+              }
+            }
+          });
+      }
+    });
+</script>

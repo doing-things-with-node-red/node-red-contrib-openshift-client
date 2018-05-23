@@ -1,0 +1,27 @@
+{
+  "name": "node-red-contrib-oc",
+  "version": "1.0.0-alpha-01",
+  "description": "",
+  "keywords": [
+    "node-red"
+  ],
+  "node-red": {
+    "nodes": {
+      "ocConfig": "lib/config.js",
+      "ocLogin": "lib/login.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ymedlop/node-red-contrib-oc.git"
+  },
+  "author": "Yeray Medina López",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ymedlop/node-red-contrib-oc/issues"
+  },
+  "homepage": "https://github.com/ymedlop/node-red-contrib-oc#readme",
+  "dependencies": {
+    "node-oc": "^1.0.0-alpha-02"
+  }
+}
