@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/ymedlop/node-red-contrib-oc#readme",
   "dependencies": {
-    "node-oc": "^1.0.0-alpha-06"
+    "node-oc": "^1.0.0-alpha-07"
   },
   "devDependencies": {
     "ci-publish": "^1.3.1",
