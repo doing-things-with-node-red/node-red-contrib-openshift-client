@@ -1,8 +1,9 @@
 {
-    "oc": {
-        "label": {
-            "name": "Name",
-            "server": "Server"
-        }
+  "oc": {
+    "label": {
+      "name": "Name",
+      "project": "Project",
+      "server": "Server"
     }
+  }
 }
