@@ -1,0 +1,87 @@
+<script type="text/x-red" data-template-name="ocNewApp">
+    <div class="form-row">
+        <label for="node-input-name">
+            <i class="icon-tag"></i>
+            <span data-i18n="oc.label.name"></span>
+        </label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name"> </div>
+        <div class="form-row">
+            <label for="node-input-template">
+                <span data-i18n="oc.label.template"></span>
+            </label>
+            <input type="text" id="node-input-template" data-i18n="[placeholder]oc.placeholder.template" style="width: 60%;">
+            <input type="hidden" id="node-input-templateFieldType">
+        </div>
+        <div class="form-row" id="node-div-parameters">
+            <label for="node-input-parameters">
+                <span data-i18n="oc.label.parameters"></span>
+            </label>
+            <input type="text" id="node-input-parameters" data-i18n="[placeholder]oc.placeholder.parameters" style="width: 60%;">
+            <input type="hidden" id="node-input-parametersFieldType">
+        </div>
+        <div class="form-row" id="node-div-formatOutput">
+            <label for="node-input-formatOutput"><span data-i18n="oc.label.formatOutput"></span></label>
+            <select id="node-input-formatOutput" style="width:180px;" />
+        </div>
+    </div>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType("ocNewApp", {
+        category: "OpenShift",
+        color: '#d4d4d4',
+        defaults: {
+            name: {
+                value: ""
+            },
+            formatOutput: {
+                value: "json"
+            },
+            template: {
+                value: ""
+            },
+            templateFieldType: {
+                value: "str"
+            },
+            parameters: {
+                value: 'payload'
+            },
+            parametersFieldType: {
+                value: 'msg'
+            },
+            output: {
+                value: true
+            },
+            outputs: {
+                value: 2
+            }
+        },
+        inputs: 1,
+        icon: "oc.png",
+        align: "left",
+        label: function () {
+            return this.name || "oc-new-app";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+            $("#node-input-template").typedInput({
+                default: 'str',
+                types: ['str', 'msg', 'flow', 'global'],
+                typeField: $("#node-input-templateFieldType")
+            });
+            $("#node-input-parameters").typedInput({
+                default: 'msg',
+                types: ['msg', 'flow', 'global'],
+                typeField: $("#node-input-parametersFieldType")
+            });
+            $("#node-input-formatOutput").append($('<option>', {
+                value: "json",
+                text: "json"
+            })).append($('<option>', {
+                value: "yaml",
+                text: "yaml"
+            }));
+        }
+    });
+</script>
