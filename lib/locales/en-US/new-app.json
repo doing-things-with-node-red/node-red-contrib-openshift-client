@@ -1,0 +1,10 @@
+{
+  "oc": {
+    "label": {
+      "name": "Name",
+      "template": "Template",
+      "formatOutput": "Output Format",
+      "variables": "Variables"
+    }
+  }
+}
