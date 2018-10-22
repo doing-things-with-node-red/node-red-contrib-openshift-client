@@ -1,0 +1,152 @@
+<script type="text/x-red" data-template-name="ocDeploymentConfig">
+    <div class="form-row">
+        <label for="node-input-name">
+            <i class="icon-tag"></i>
+            <span data-i18n="node-red:common.label.name"></span>
+        </label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name"> </div>
+        <div class="form-row">
+            <label for="node-input-ocConfig">
+                <i class="fa fa-server"></i>
+                <span data-i18n="oc.label.server"></span>
+            </label>
+            <input type="text" id="node-input-ocConfig">
+        </div>
+        <div class="form-row">
+            <label for="node-input-namespace">
+                <span data-i18n="oc.label.namespace"></span>
+            </label>
+            <input type="text" id="node-input-namespace" data-i18n="[placeholder]oc.placeholder.namespace" style="width: 60%;">
+            <input type="hidden" id="node-input-namespaceFieldType">
+        </div>
+        <div class="form-row">
+            <label for="node-input-deploymentConfig">
+                <span data-i18n="oc.label.deploymentConfig"></span>
+            </label>
+            <input type="text" id="node-input-deploymentConfig" data-i18n="[placeholder]oc.placeholder.deploymentConfig" style="width: 60%;">
+            <input type="hidden" id="node-input-deploymentConfigFieldType">
+        </div>
+        <div class="form-row">
+            <label for="node-input-method"><span data-i18n="oc.label.method"></span></label>
+            <select id="node-input-method" style="width:180px;">
+                <option value="get">get</option>
+                <option value="patch">patch</option>
+                <option value="post">post</option>
+                <option value="delete">delete</option>
+            </select>
+        </div>
+    </div>
+</script>
+<script type="text/x-red" data-help-name="ocDeploymentConfig">
+    <p>DeploymentConfig resource management using Openshift Api Rest.</p>
+
+   <h3>Input data</h3>
+   <dl class="message-properties">
+        <dt>
+            Server
+            <span class="property-type">Object</span>
+        </dt>
+        <dd>Openshift Server Configuration</dd>
+       <dt>
+           project
+           <span class="property-type">String</span>
+        </dt>
+       <dd>Openshift Project Target</dd>
+       <dt>
+           name
+           <span class="property-type">String</span>
+        </dt>
+       <dd>DeploymentConfig name</dd>
+       <dt>
+           method 
+           <span class="property-type">String</span></dt>
+       <dd>REST Api Operation</dd>
+        <dt>
+            payload
+            <span class="property-type">Object</span>
+        </dt>
+        <dd> the payload of the message </dd>
+    </dl>
+
+    <h3>Outputs</h3>
+    <ol class="node-ports">
+        <li>Api output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">Object</span></dt>
+                <dd>the standard output of the command.</dd>
+            </dl>
+        </li>
+        <li>Api error
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">Object</span></dt>
+                <dd>the standard error of the command.</dd>
+            </dl>
+        </li>
+    </ol>
+
+    <h3>Details</h3>
+    <p><code>msg.payload</code> is used only in [ patch, delete, post ] cases.
+
+    <h3>References</h3>
+    <ul>
+        <li><a href="https://github.com/godaddy/kubernetes-client">kubernetes-client</a> - Simplified Kubernetes API client for Node.js/li>
+        <li><a href="https://docs.openshift.com/container-platform/3.7/rest_api/index.html">Openshift Rest Api (oapi)</a> - RESTful APIs accessible via HTTP(s) on the OpenShift Container Platform master servers.</li>
+    </ul>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType("ocDeploymentConfig", {
+        category: "OpenShift",
+        color: '#d4d4d4',
+        defaults: {
+            name: {
+                value: ""
+            },
+            ocConfig: {
+                type: "ocConfig",
+                required: true
+            },
+            namespace: {
+                value: ""
+            },
+            namespaceFieldType: {
+                value: "str"
+            },
+            deploymentConfig: {
+                value: ""
+            },
+            deploymentConfigFieldType: {
+                value: "str"
+            },
+            method: {
+                value: 'get'
+            },
+            output: {
+                value: true
+            },
+            outputs: {
+                value: 2
+            }
+        },
+        inputs: 1,
+        icon: "oc.png",
+        align: "left",
+        label: function () {
+            return this.name || "oc-deploymentConfig";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+            $("#node-input-namespace").typedInput({
+                default: 'str',
+                types: ['str', 'msg', 'flow', 'global'],
+                typeField: $("#node-input-namespaceFieldType")
+            });
+            $("#node-input-deploymentConfig").typedInput({
+                default: 'str',
+                types: ['str', 'msg', 'flow', 'global'],
+                typeField: $("#node-input-deploymentConfigFieldType")
+            });
+        }
+    });
+</script>
