@@ -1,0 +1,14 @@
+{
+  "oc": {
+    "label": {
+      "server": "Server",
+      "deploymentConfig": "Name",
+      "namespace": "Project",
+      "method": "Method"
+    },
+    "placeholder": {
+      "deploymentConfig": "Openshift DeploymentConfig name",
+      "namespace": "Openshift Project"
+    }
+  }
+}
