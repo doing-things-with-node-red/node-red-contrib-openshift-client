@@ -1,0 +1,15 @@
+{
+  "oc": {
+    "label": {
+      "server": "Server",
+      "selector": "Name",
+      "namespace": "Project",
+      "kind": "Kind",
+      "method": "Method"
+    },
+    "placeholder": {
+      "selector": "Openshift Resource name",
+      "namespace": "Openshift Project"
+    }
+  }
+}
