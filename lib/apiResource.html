@@ -1,4 +1,4 @@
-<script type="text/x-red" data-template-name="ocDeploymentConfig">
+<script type="text/x-red" data-template-name="ocApiResource">
     <div class="form-row">
         <label for="node-input-name">
             <i class="icon-tag"></i>
@@ -20,25 +20,35 @@
             <input type="hidden" id="node-input-namespaceFieldType">
         </div>
         <div class="form-row">
-            <label for="node-input-deploymentConfig">
-                <span data-i18n="oc.label.deploymentConfig"></span>
+            <label for="node-input-selector">
+                <span data-i18n="oc.label.selector"></span>
             </label>
-            <input type="text" id="node-input-deploymentConfig" data-i18n="[placeholder]oc.placeholder.deploymentConfig" style="width: 60%;">
-            <input type="hidden" id="node-input-deploymentConfigFieldType">
+            <input type="text" id="node-input-selector" data-i18n="[placeholder]oc.placeholder.selector" style="width: 60%;">
+            <input type="hidden" id="node-input-selectorFieldType">
+        </div>
+        <div class="form-row">
+            <label for="node-input-kind"><span data-i18n="oc.label.kind"></span></label>
+            <select id="node-input-kind" style="width:180px;">
+                    <option value="persistentvolumes">PersistentVolumes</option>
+                    <option value="persistentvolumeclaims">PersistentVolumeClaims</option>
+                    <option value="services">Services</option>
+            </select>
         </div>
         <div class="form-row">
             <label for="node-input-method"><span data-i18n="oc.label.method"></span></label>
             <select id="node-input-method" style="width:180px;">
-                <option value="get">get</option>
-                <option value="patch">patch</option>
-                <option value="post">post</option>
-                <option value="delete">delete</option>
+                    <option value="post">post</option>
+                    <option value="get">get</option>
+                    <option value="put">put</option>
+                    <option value="patch">patch</option>
+                    <option value="delete">delete</option>
+                    <option value="patch">patch</option>
             </select>
         </div>
     </div>
 </script>
-<script type="text/x-red" data-help-name="ocDeploymentConfig">
-    <p>DeploymentConfig resource management using Openshift Api Rest.</p>
+<script type="text/x-red" data-help-name="ocApiResource">
+    <p>Namespace resource management using Openshift Api Rest.</p>
 
    <h3>Input data</h3>
    <dl class="message-properties">
@@ -94,7 +104,7 @@
     </ul>
 </script>
 <script type="text/javascript">
-    RED.nodes.registerType("ocDeploymentConfig", {
+    RED.nodes.registerType("ocApiResource", {
         category: "OpenShift",
         color: '#d4d4d4',
         defaults: {
@@ -111,11 +121,14 @@
             namespaceFieldType: {
                 value: "str"
             },
-            deploymentConfig: {
+            selector: {
                 value: ""
             },
-            deploymentConfigFieldType: {
+            selectorFieldType: {
                 value: "str"
+            },
+            kind: {
+                value: 'services'
             },
             method: {
                 value: 'get'
@@ -131,7 +144,7 @@
         icon: "oc.png",
         align: "left",
         label: function () {
-            return this.name || "oc-deploymentConfig";
+            return this.name || "oc-api-namespace-resource";
         },
         labelStyle: function () {
             return this.name ? "node_label_italic" : "";
@@ -142,10 +155,10 @@
                 types: ['str', 'msg', 'flow', 'global'],
                 typeField: $("#node-input-namespaceFieldType")
             });
-            $("#node-input-deploymentConfig").typedInput({
+            $("#node-input-selector").typedInput({
                 default: 'str',
                 types: ['str', 'msg', 'flow', 'global'],
-                typeField: $("#node-input-deploymentConfigFieldType")
+                typeField: $("#node-input-selectorConfigFieldType")
             });
         }
     });
