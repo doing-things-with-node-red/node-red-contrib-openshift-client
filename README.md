@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/ymedlop/node-red-contrib-oc/tree/master.svg?style=svg)](https://circleci.com/gh/ymedlop/node-red-contrib-oc/tree/master)
+
 **Alpha Status**
 
 node-red-contrib-oc
