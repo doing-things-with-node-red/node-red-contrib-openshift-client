@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+#### 1.0.2-alpha
+
+- Fixed send status code when it is a successful request.
+
 #### 1.0.1-alpha
 
 - Added the possibly to set our node configuration on the fly (msg.oc.config)

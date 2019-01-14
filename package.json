@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-openshift-client",
-  "version": "1.0.1-alpha",
+  "version": "1.0.2-alpha",
   "description": "",
   "keywords": [
     "node-red",
