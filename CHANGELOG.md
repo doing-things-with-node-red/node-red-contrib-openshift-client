@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+#### 1.0.5-alpha
+
+- Fix token input
+
 #### 1.0.4-alpha
 
 - Replace key name oc to openshift.
