@@ -1,4 +1,4 @@
-<script type="text/x-red" data-template-name="ocApiResource">
+<script type="text/x-red" data-template-name="openshiftApiResource">
     <div class="form-row">
         <label for="node-input-name">
             <i class="icon-tag"></i>
@@ -6,28 +6,28 @@
         </label>
         <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name"> </div>
         <div class="form-row">
-            <label for="node-input-ocConfig">
+            <label for="node-input-openshiftConfig">
                 <i class="fa fa-server"></i>
-                <span data-i18n="oc.label.server"></span>
+                <span data-i18n="openshift.label.server"></span>
             </label>
-            <input type="text" id="node-input-ocConfig">
+            <input type="text" id="node-input-openshiftConfig">
         </div>
         <div class="form-row">
             <label for="node-input-namespace">
-                <span data-i18n="oc.label.namespace"></span>
+                <span data-i18n="openshift.label.namespace"></span>
             </label>
-            <input type="text" id="node-input-namespace" data-i18n="[placeholder]oc.placeholder.namespace" style="width: 60%;">
+            <input type="text" id="node-input-namespace" data-i18n="[placeholder]openshift.placeholder.namespace" style="width: 60%;">
             <input type="hidden" id="node-input-namespaceFieldType">
         </div>
         <div class="form-row">
             <label for="node-input-selector">
-                <span data-i18n="oc.label.selector"></span>
+                <span data-i18n="openshift.label.selector"></span>
             </label>
-            <input type="text" id="node-input-selector" data-i18n="[placeholder]oc.placeholder.selector" style="width: 60%;">
+            <input type="text" id="node-input-selector" data-i18n="[placeholder]openshift.placeholder.selector" style="width: 60%;">
             <input type="hidden" id="node-input-selectorFieldType">
         </div>
         <div class="form-row">
-            <label for="node-input-kind"><span data-i18n="oc.label.kind"></span></label>
+            <label for="node-input-kind"><span data-i18n="openshift.label.kind"></span></label>
             <select id="node-input-kind" style="width:180px;">
                     <option value="persistentvolumes">PersistentVolumes</option>
                     <option value="persistentvolumeclaims">PersistentVolumeClaims</option>
@@ -35,7 +35,7 @@
             </select>
         </div>
         <div class="form-row">
-            <label for="node-input-method"><span data-i18n="oc.label.method"></span></label>
+            <label for="node-input-method"><span data-i18n="openshift.label.method"></span></label>
             <select id="node-input-method" style="width:180px;">
                     <option value="post">post</option>
                     <option value="get">get</option>
@@ -47,7 +47,7 @@
         </div>
     </div>
 </script>
-<script type="text/x-red" data-help-name="ocApiResource">
+<script type="text/x-red" data-help-name="openshiftApiResource">
     <p>Namespace resource management using Openshift Api Rest.</p>
 
    <h3>Input data</h3>
@@ -100,19 +100,19 @@
     <h3>References</h3>
     <ul>
         <li><a href="https://github.com/godaddy/kubernetes-client">kubernetes-client</a> - Simplified Kubernetes API client for Node.js/li>
-        <li><a href="https://docs.openshift.com/container-platform/3.7/rest_api/index.html">Openshift Rest Api (oapi)</a> - RESTful APIs accessible via HTTP(s) on the OpenShift Container Platform master servers.</li>
+        <li><a href="https://dopenshifts.openshift.com/container-platform/3.7/rest_api/index.html">Openshift Rest Api (oapi)</a> - RESTful APIs accessible via HTTP(s) on the OpenShift Container Platform master servers.</li>
     </ul>
 </script>
 <script type="text/javascript">
-    RED.nodes.registerType("ocApiResource", {
+    RED.nodes.registerType("openshiftApiResource", {
         category: "OpenShift",
         color: '#d4d4d4',
         defaults: {
             name: {
                 value: ""
             },
-            ocConfig: {
-                type: "ocConfig",
+            openshiftConfig: {
+                type: "openshiftConfig",
                 required: true
             },
             namespace: {
@@ -141,10 +141,10 @@
             }
         },
         inputs: 1,
-        icon: "oc.png",
+        icon: "openshift.png",
         align: "left",
         label: function () {
-            return this.name || "oc-api-namespace-resource";
+            return this.name || "openshift-api-namespace-resource";
         },
         labelStyle: function () {
             return this.name ? "node_label_italic" : "";

@@ -1,46 +1,46 @@
-<script type="text/x-red" data-template-name="ocConfig">
+<script type="text/x-red" data-template-name="openshiftConfig">
     <div class="form-row">
         <label for="node-config-input-name">
             <i class="fa fa-tag"></i>
-            <span data-i18n="oc.label.name"></span>
+            <span data-i18n="openshift.label.name"></span>
         </label>
-        <input type="text" id="node-config-input-name" data-i18n="[placeholder]oc.placeholder.name">
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]openshift.placeholder.name">
     </div>
     <div class="form-row">
-        <ul style="background: #fff; min-width: 600px; margin-bottom: 20px;" id="ocConfig-tabs"></ul>
+        <ul style="background: #fff; min-width: 600px; margin-bottom: 20px;" id="openshiftConfig-tabs"></ul>
     </div>
-    <div id="ocConfig-tabs-content" style="min-height: 170px;">
-        <div id="ocConfig-tab-connection" style="display: none;">
+    <div id="openshiftConfig-tabs-content" style="min-height: 170px;">
+        <div id="openshiftConfig-tab-connection" style="display: none;">
             <div class="form-row">
                 <label for="node-config-input-host">
                     <i class="fa fa-server"></i>
-                    <span data-i18n="oc.label.host"></span>
+                    <span data-i18n="openshift.label.host"></span>
                 </label>
-                <input type="text" id="node-config-input-host" data-i18n="[placeholder]oc.placeholder.host" style="width: 80%;">
+                <input type="text" id="node-config-input-host" data-i18n="[placeholder]openshift.placeholder.host" style="width: 80%;">
                 <input type="hidden" id="node-config-input-hostFieldType">
             </div>
             <div class="form-row">
                 <label for="node-config-input-port">
-                    <span data-i18n="oc.label.port"></span>
+                    <span data-i18n="openshift.label.port"></span>
                 </label>
-                <input type="text" id="node-config-input-port" data-i18n="[placeholder]oc.placeholder.port" style="width: 80%;">
+                <input type="text" id="node-config-input-port" data-i18n="[placeholder]openshift.placeholder.port" style="width: 80%;">
                 <input type="hidden" id="node-config-input-portFieldType">
             </div>
             <div class="form-row">
                 <label for="node-config-input-insecure" style="width: auto;margin-right: 72px;">
-                    <span data-i18n="oc.label.insecure"></span>
+                    <span data-i18n="openshift.label.insecure"></span>
                 </label>
-                <input type="text" id="node-config-input-insecure" style="display: inline-block; width: auto; vertical-align: top;">
+                <input type="text" id="node-config-input-insecure" style="display: inline-blopenshiftk; width: auto; vertical-align: top;">
                 <input type="hidden" id="node-config-input-insecureFieldType">
             </div>
         </div>
-        <div id="ocConfig-tab-security" style="display: none;">
+        <div id="openshiftConfig-tab-security" style="display: none;">
             <div class="form-row">
                 <label for="node-config-input-token">
-                    <i class="fa fa-lock"></i>
-                    <span data-i18n="oc.label.token"></span>
+                    <i class="fa fa-lopenshiftk"></i>
+                    <span data-i18n="openshift.label.token"></span>
                 </label>
-                <input type="password" id="node-config-input-token" data-i18n="[placeholder]oc.placeholder.token" style="width: 80%;">
+                <input type="password" id="node-config-input-token" data-i18n="[placeholder]openshift.placeholder.token" style="width: 80%;">
                 <input type="hidden" id="node-config-input-tokenFieldType">
             </div>
         </div>
@@ -48,7 +48,7 @@
     </div>
 </script>
 <script type="text/javascript">
-  RED.nodes.registerType('ocConfig', {
+  RED.nodes.registerType('openshiftConfig', {
     category: "config",
     color: "#FFF",
     defaults: {
@@ -86,7 +86,7 @@
     },
     label: function () {
       if (!this.name) {
-        this.name = "oc@" + this.host + ":" + this.port;
+        this.name = "openshift@" + this.host + ":" + this.port;
       }
       return this.name;
     },
@@ -95,19 +95,19 @@
     },
     oneditprepare: function () {
       const tabs = RED.tabs.create({
-        id: "ocConfig-tabs",
+        id: "openshiftConfig-tabs",
         onchange: function (tab) {
-          $("#ocConfig-tabs-content").children().hide();
+          $("#openshiftConfig-tabs-content").children().hide();
           $("#" + tab.id).show();
         }
       });
       tabs.addTab({
-        id: "ocConfig-tab-connection",
-        label: this._('oc.tab.connection')
+        id: "openshiftConfig-tab-connection",
+        label: this._('openshift.tab.connection')
       });
       tabs.addTab({
-        id: "ocConfig-tab-security",
-        label: this._('oc.tab.security')
+        id: "openshiftConfig-tab-security",
+        label: this._('openshift.tab.security')
       });
       $("#node-config-input-host").typedInput({
         default: 'str',
