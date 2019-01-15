@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+#### 1.0.4-alpha
+
+- Replace key name oc to openshift.
+- Update package dependencies.
+
+#### 1.0.3-alpha
+
+- Fixed error handling.
+
 #### 1.0.2-alpha
 
 - Fixed send status code when it is a successful request.
