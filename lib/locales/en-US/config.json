@@ -1,5 +1,5 @@
 {
-    "oc": {
+    "openshift": {
         "label": {
             "name": "Name",
             "host": "Host",
@@ -8,7 +8,7 @@
             "token": "Token"
         },
         "placeholder": {
-            "name": "ocConfig",
+            "name": "openshiftConfig",
             "host": "127.0.0.1",
             "port": "5432",
             "token": "token"

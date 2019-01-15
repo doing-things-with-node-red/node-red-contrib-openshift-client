@@ -1,5 +1,5 @@
 {
-  "oc": {
+  "openshift": {
     "label": {
       "server": "Server",
       "deploymentConfig": "Name",
