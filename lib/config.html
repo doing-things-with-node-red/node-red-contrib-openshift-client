@@ -30,7 +30,7 @@
                 <label for="node-config-input-insecure" style="width: auto;margin-right: 72px;">
                     <span data-i18n="openshift.label.insecure"></span>
                 </label>
-                <input type="text" id="node-config-input-insecure" style="display: inline-blopenshiftk; width: auto; vertical-align: top;">
+                <input type="text" id="node-config-input-insecure" style="display: inline-block; width: auto; vertical-align: top;">
                 <input type="hidden" id="node-config-input-insecureFieldType">
             </div>
         </div>
@@ -40,7 +40,7 @@
                     <i class="fa fa-lopenshiftk"></i>
                     <span data-i18n="openshift.label.token"></span>
                 </label>
-                <input type="password" id="node-config-input-token" data-i18n="[placeholder]openshift.placeholder.token" style="width: 80%;">
+                <input id="node-config-input-token" data-i18n="[placeholder]openshift.placeholder.token" style="width: 80%;">
                 <input type="hidden" id="node-config-input-tokenFieldType">
             </div>
         </div>
@@ -124,28 +124,11 @@
         types: ['bool', 'flow', 'global'],
         typeField: $("#node-config-input-insecureFieldType")
       });
-      $("#node-config-input-token")
-        .typedInput({
-          default: 'str',
-          types: ['str', , 'msg', 'flow', 'global'],
-          typeField: $("#node-config-input-tokenFieldType")
-        })
-        .on('change', function (type, value) {
-          const e = $(this);
-          const kind = value === true ? e.typedInput('type') : value;
-          switch (kind) {
-            case 'msg':
-            case 'global':
-            case 'flow': {
-              e.attr('type', 'text');
-              break;
-            }
-            case 'str': {
-              e.attr('type', 'password');
-              break;
-            }
-          }
-        });
+      $("#node-config-input-token").typedInput({
+        default: 'str',
+        types: ['str', 'msg', 'flow', 'global'],
+        typeField: $("#node-config-input-tokenFieldType")
+      });
     }
   });
 </script>
