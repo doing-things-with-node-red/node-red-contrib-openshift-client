@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/ymedlop/node-red-contrib-openshift-client/tree/master.svg?style=svg)](https://circleci.com/gh/ymedlop/node-red-contrib-openshift-client/tree/master) [![Greenkeeper badge](https://badges.greenkeeper.io/ymedlop/node-red-contrib-openshift-client.svg)](https://greenkeeper.io/)
+[![Build Status](https://dev.azure.com/ymedlop/node-red-contrib/_apis/build/status/ymedlop.node-red-contrib-openshift-client?branchName=master)](https://dev.azure.com/ymedlop/node-red-contrib/_build/latest?definitionId=5&branchName=master) [![Greenkeeper badge](https://badges.greenkeeper.io/ymedlop/node-red-contrib-openshift-client.svg)](https://greenkeeper.io/)
 
 **Alpha Status**
 
