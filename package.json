@@ -10,7 +10,8 @@
     "kubernetes"
   ],
   "scripts": {
-    "lint": "eslint lib/*.js"
+    "lint": "eslint lib/*.js",
+    "test": "echo \"Error: no test specified\""
   },
   "node-red": {
     "nodes": {
