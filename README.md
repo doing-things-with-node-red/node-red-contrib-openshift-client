@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/ymedlop/node-red-contrib/_apis/build/status/ymedlop.node-red-contrib-openshift-client?branchName=master)](https://dev.azure.com/ymedlop/node-red-contrib/_build/latest?definitionId=5&branchName=master) [![Greenkeeper badge](https://badges.greenkeeper.io/ymedlop/node-red-contrib-openshift-client.svg)](https://greenkeeper.io/)
+[![Build Status](https://dev.azure.com/doing-things-with-node-red/node-red-contrib/_apis/build/status/doing-things-with-node-red.node-red-contrib-openshift-client?branchName=master)](https://dev.azure.com/doing-things-with-node-red/node-red-contrib/_build/latest?definitionId=3&branchName=master) [![Greenkeeper badge](https://badges.greenkeeper.io/ymedlop/node-red-contrib-openshift-client.svg)](https://greenkeeper.io/)
 
 **Alpha Status**
 
