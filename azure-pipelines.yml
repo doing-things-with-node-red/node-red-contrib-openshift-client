@@ -23,7 +23,7 @@ steps:
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: |
-      **/*
+      *
       !node_modules/**/*
       !.git/**/*
       package.json
