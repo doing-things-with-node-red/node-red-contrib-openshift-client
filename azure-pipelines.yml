@@ -23,7 +23,8 @@ steps:
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: |
-      **/src/**
+      **/*
+      !.git/**/*
       package.json
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
