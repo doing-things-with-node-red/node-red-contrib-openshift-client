@@ -16,17 +16,14 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
-    npm run lint
-  displayName: 'npm install and lint'
+    npm i
+  displayName: 'npm install'
 
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: |
-      **\*.js
-      **\*.json
-      package.json
+      **
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
