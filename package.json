@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/doing-things-with-node-red/node-red-contrib-openshift-client#readme",
   "dependencies": {
-    "kubernetes-client": "8.3.6"
+    "kubernetes-client": "8.3.7"
   },
   "devDependencies": {
     "eslint": "6.8.0",
